@@ -9,12 +9,20 @@ export const vbox = new vm.SandBox(
         path: require('path'),
         fs: require('fs'),
         events: require('events'),
-        util: require('util'),
+        util: {
+            deprecate: require('util-deprecate/browser'),
+            ...require('util'),
+        },
         crypto: require('crypto'),
         buffer: require('buffer'),
         // constants: {},
         module: PatchedModule,
         'builtin-modules': builtinModules
+    },
+    (name) => {
+        if (builtinModules.includes(name)) {
+            return require(name)
+        }
     }
 );
 

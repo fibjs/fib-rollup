@@ -24,7 +24,9 @@
   },
   "homepage": "https://github.com/fibjs/fib-rollup#readme",
   "dependencies": {
-    "rollup": "^0.63.4"
+    "is-module": "^1.0.0",
+    "rollup": "^0.63.4",
+    "util-deprecate": "^1.0.2"
   },
   "devDependencies": {
     "@types/fibjs": "^0.25.2",
