@@ -29,7 +29,7 @@
     "util-deprecate": "^1.0.2"
   },
   "devDependencies": {
-    "@types/fibjs": "^0.25.2",
+    "@types/fibjs": "^0.26.0",
     "fib-typify": "^0.2.0",
     "react": "^16.4.1",
     "rollup-plugin-buble": "^0.19.2",
