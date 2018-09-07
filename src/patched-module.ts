@@ -112,7 +112,6 @@ export default class Module {
     static globalPaths = [];
 
     constructor(id: string, parent: Module | null) {
-        console.log('this', id)
         this.id = id;
         this.exports = {};
         this.parent = parent;
@@ -123,7 +122,6 @@ export default class Module {
     }
 
     static _nodeModulePaths(rootPath: string) {
-        console.log('_nodeModulePaths', arguments)
         switch (os.platform()) {
             case 'win32':
                 return _nodeModulePaths_win32(rootPath);
