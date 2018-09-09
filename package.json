@@ -1,0 +1,57 @@
+{
+  "name": "fib-rollup",
+  "version": "0.0.1",
+  "description": "rollup wrapper of fibjs",
+  "main": "./lib/index.js",
+  "scripts": {
+    "build": "fib-typify src -c .typifyrc.json -o lib",
+    "ci": "fibjs test.js",
+    "test-simple": "cd ./demo/simple && fibjs build.js",
+    "test-frontend": "cd ./demo/frontend && fibjs build.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fibjs/fib-rollup.git"
+  },
+  "keywords": [
+    "fibjs",
+    "rollup"
+  ],
+  "author": "richardo2016@gmail.com",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/fibjs/fib-rollup/issues"
+  },
+  "homepage": "https://github.com/fibjs/fib-rollup#readme",
+  "dependencies": {
+    "is-module": "^1.0.0",
+    "rollup": "^0.63.4",
+    "util-deprecate": "^1.0.2",
+    "vue": "^2.5.17",
+    "vue-template-compiler": "^2.5.17"
+  },
+  "devDependencies": {
+    "@types/fibjs": "^0.26.0",
+    "fib-typify": "^0.2.0",
+    "react": "^16.4.1",
+    "rollup-plugin-buble": "^0.19.2",
+    "rollup-plugin-commonjs": "^9.1.4",
+    "rollup-plugin-node-resolve": "^3.3.0",
+    "rollup-plugin-pug": "^0.1.6",
+    "rollup-plugin-vue": "^4.3.2",
+    "stylus": "^0.54.5"
+  },
+  "peerDependencies": {
+    "vue-template-compiler": "*",
+    "vue": "*"
+  },
+  "ci": {
+    "type": "travis",
+    "version": [
+      "0.26.1"
+    ]
+  },
+  "engines": {
+    "fibjs": ">=0.26.1"
+  }
+}
