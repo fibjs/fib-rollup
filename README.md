@@ -1,4 +1,8 @@
 # fib-rollup
+
+[![Build Status](https://travis-ci.org/fibjs/fib-rollup.svg)](https://travis-ci.org/fibjs/fib-rollup)
+[![NPM version](https://img.shields.io/npm/v/fib-rollup.svg)](https://www.npmjs.org/package/fib-rollup)
+
 fibjs wrapper for rollup
 
 ## Pre-requisite
