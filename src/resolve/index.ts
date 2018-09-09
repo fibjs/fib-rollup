@@ -46,7 +46,7 @@ function cachedIsFile(file, cb) {
     isFileCache[file].then(contents => cb(null, contents), cb);
 }
 
-function fibjsResolve(options: RollupPluginFibjsResolveOptions) {
+function fibjsResolve(options: RollupPluginFibjsResolveOptions = {}) {
     const useModule = options.module !== false;
     const useMain = options.main !== false;
     const useJsnext = options.jsnext === true;

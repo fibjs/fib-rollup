@@ -1,3 +1,5 @@
+const { isDebugDemo } = require('../_utils')
+
 const {default: rollup, fibjsResolve, getCustomizedVBox} = require('../../')
 
 const vbox = getCustomizedVBox({
@@ -5,7 +7,7 @@ const vbox = getCustomizedVBox({
     format: (content) => content
   }
 })
-const buble = require('rollup-plugin-buble')
+const typescript = require('rollup-plugin-typescript')
 const commonjs = require('rollup-plugin-commonjs')
 const vuePlugin = vbox.require('rollup-plugin-vue', __dirname).default
 const pugjs = require('rollup-plugin-pug')
@@ -25,17 +27,17 @@ exports.compile = async function (srcpath, targetpath, umdName = 'umdComponent')
             }
           }),
           pugjs(),
-          buble(),
+          typescript(),
           fibjsResolve({
               browser: true
           }),
           commonjs()
       ]
   }).catch(e => {
-    console.log('[e] bundle', e, e.stack)
+    console.log('[e] bundle', e.stack)
   });
 
-  console.log(`========generating: ${srcpath} --> ${targetpath} ==========`);
+  isDebugDemo() && console.log(`========generating: ${srcpath} --> ${targetpath} ==========`);
 
   await bundle.write({
       file: targetpath,
@@ -45,8 +47,8 @@ exports.compile = async function (srcpath, targetpath, umdName = 'umdComponent')
         vue: 'Vue'
       }
   }).catch(e => {
-    console.log('[e] write', e, e.stack)
+    console.log('[e] write', e.stack)
   });
 
-  console.log(`========generated: ${srcpath} --> ${targetpath} ==========`);
+  isDebugDemo() && console.log(`========generated: ${srcpath} --> ${targetpath} ==========`);
 }

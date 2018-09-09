@@ -1,28 +1,34 @@
-const {default: rollup, vbox} = require('../../')
+const path = require('path');
+const { default: rollup, fibjsResolve } = require('../../')
 
 const commonjs = require('rollup-plugin-commonjs');
-const resolve = vbox.require('rollup-plugin-node-resolve', __dirname);
 
 const bundle = await rollup.rollup({
-    input: './index.js',
+    input: path.resolve(__dirname, './index.js'),
     external: ['coroutine'],
     plugins: [
-        resolve(),
+        fibjsResolve(),
         commonjs()
     ]
-});
+}).catch(e => console.error(e));
 
-// console.log('==================');
+// console.log('========generating==========');
 
 const {
     code,
     map
 } = await bundle.generate({
-    file: './dist/bundle.js',
+    file: path.resolve(__dirname, './dist/bundle.js'),
     format: 'cjs'
-});
+}).catch(e => console.error(e));
+
+// console.log('========generated==========');
+
+// console.log('========writing==========');
 
 await bundle.write({
-    file: './dist/bundle.js',
+    file: path.resolve(__dirname, './dist/bundle.js'),
     format: 'cjs'
-});
+}).catch(e => console.error(e));
+
+// console.log('========written==========');

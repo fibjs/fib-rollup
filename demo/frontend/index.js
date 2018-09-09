@@ -3,11 +3,12 @@ import React from 'react'
 
 const vm = new Vue({
     data () {
-        return {}
+        return {
+            
+        }
     },
 
     created () {
-        console.log('Vue created')
     }
 })
 
