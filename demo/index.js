@@ -3,12 +3,11 @@ var rmdirr = require('@fibjs/rmdirr')
 var VueSsr = require('./_utils').getVueSSRInstance()
 var cheerio = require('cheerio')
 var Vue = require('vue')
-var cmd = process.execPath;
 
 var test = require('test')
 test.setup()
 
-describe('umd:package', () => {
+describe('cjs:package', () => {
     before(() => {
         try {
             rmdirr('./*/dist');
@@ -17,6 +16,7 @@ describe('umd:package', () => {
         }
     })
 
+
     it('simple', () => {
         require('./simple/build')
 
@@ -24,6 +24,16 @@ describe('umd:package', () => {
 
         assert.isFunction(bundle)
         assert.equal(bundle(), 'hello, fib-rollup')
+    })
+})
+
+describe('umd:package', () => {
+    before(() => {
+        try {
+            rmdirr('./*/dist');
+        } catch(err) {
+            console.error(err);
+        }
     })
 
     it('mvvm framework in server-side', () => {

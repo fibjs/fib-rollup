@@ -3,7 +3,8 @@ import util = require('util');
 
 import PatchedModule from '../patched-module'
 
-export const builtinModules = util.buildInfo().modules
+const buildInfo: any = util.buildInfo()
+export const builtinModules = buildInfo.modules
 export const recommendedVBoxModules = {
     fs: require('fs'),
     path: require('path'),
