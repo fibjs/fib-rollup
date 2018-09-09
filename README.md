@@ -13,9 +13,9 @@ It's recommended to use top-level `await` in fib-rollup's build script, just lik
 
 * rollup knowledge
 
-Benefited by rollup's distinctive and predictive design, fibjs can run [rollup] can run in fibjs perferctly with internal `vbox` Sandbox. [rollup] defined itself as `Next-generation ES module bundler`, and written with typescript which can run in both browser, nodejs and any other pure javascript context.
+Benefited by rollup's distinctive and predictive design, fibjs can run [rollup] perferctly with internal `vbox` Sandbox. [rollup] defined itself as `Next-generation ES module bundler`, and was written with typescript which can run in browser, nodejs and any other javascript context.
 
-So, just get javascript API document in [rollupjs.org] later, but wait, there're some issues you should notice. 
+Just get javascript API document in [rollupjs.org] later, before that, there're some issues you should notice. 
 
 fibjs not support all plugin of rollup(including those popular plugin such as [rollup-plugin-node-resolve]). You can alway run rollup with your own plugin, just like `fib-rollup`'s internal plugin "rollup-plugin-fibjs-resolve"(exported as 'fibjsResolve'), we also provide some [API](#API) to run existed rollup-plugin-\* packages. See details about `vbox` and `getCustomizedVBox` in [API](#API) Section.
 
