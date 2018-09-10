@@ -7,7 +7,6 @@ const vbox = getCustomizedVBox({
     format: (content) => content
   }
 })
-const typescript = require('rollup-plugin-typescript')
 const commonjs = require('rollup-plugin-commonjs')
 const vuePlugin = vbox.require('rollup-plugin-vue', __dirname).default
 const pugjs = require('rollup-plugin-pug')
@@ -27,7 +26,6 @@ exports.compile = async function (srcpath, targetpath, umdName = 'umdComponent')
             }
           }),
           pugjs(),
-          typescript(),
           fibjsResolve({
               browser: true
           }),
