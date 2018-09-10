@@ -1,6 +1,7 @@
-var process = require('process')
 var rmdirr = require('@fibjs/rmdirr')
 var VueSsr = require('./_utils').getVueSSRInstance()
+var getCustomizedVBox = require('../').getCustomizedVBox
+
 var cheerio = require('cheerio')
 var Vue = require('vue')
 
@@ -16,11 +17,19 @@ describe('cjs:package', () => {
         }
     })
 
-
     it('simple', () => {
-        require('./simple/build')
+        require('./cjs-simple/build')
 
-        var bundle = require('./simple/dist/bundle.js')
+        var bundle = require('./cjs-simple/dist/bundle.js')
+
+        assert.isFunction(bundle)
+        assert.equal(bundle(), 'hello, fib-rollup')
+    })
+
+    it('simple-ts', () => {
+        require('./cjs-simple-ts/build')
+
+        var bundle = require('./cjs-simple-ts/dist/bundle.js')
 
         assert.isFunction(bundle)
         assert.equal(bundle(), 'hello, fib-rollup')
@@ -36,16 +45,41 @@ describe('umd:package', () => {
         }
     })
 
-    it('mvvm framework in server-side', () => {
-        require('./frontend/build')
+    it('simple', () => {
+        require('./umd-simple/build')
 
-        var bundle = require('./frontend/dist/bundle.js')
+        var sb = getCustomizedVBox()
+        var bundle = sb.require('./umd-simple/dist/bundle.js', __dirname)
+
+        assert.isFunction(bundle)
+        assert.equal(bundle(), 'hello, fib-rollup')
+        assert.isTrue(Object.values(sb.modules).find(x => x === bundle) === bundle)
+    })
+
+    it('simple-ts', () => {
+        require('./umd-simple-ts/build')
+
+        var sb = getCustomizedVBox()
+        var bundle = sb.require('./umd-simple-ts/dist/bundle.js', __dirname)
+
+        assert.isFunction(bundle)
+        assert.equal(bundle(), 'hello, fib-rollup')
+        assert.isTrue(Object.values(sb.modules).find(x => x === bundle) === bundle)
+    })
+
+    it('mvvm framework in server-side', () => {
+        require('./umd-frontend/build')
+
+        var sb = getCustomizedVBox()
+        var bundle = sb.require('./umd-frontend/dist/bundle.js', __dirname)
 
         assert.isFunction(bundle)
         var result = bundle()
 
         assert.property(result, 'Vue')
         assert.property(result, 'React')
+
+        assert.isTrue(Object.values(sb.modules).find(x => x === bundle) === bundle)
     })
 
     describe('vue-component ssr', () => {

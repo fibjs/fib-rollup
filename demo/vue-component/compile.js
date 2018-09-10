@@ -34,7 +34,7 @@ exports.compile = async function (srcpath, targetpath, umdName = 'umdComponent')
           commonjs()
       ]
   }).catch(e => {
-    console.log('[e] bundle', e.stack)
+    console.error('[e] bundle', e.stack)
   });
 
   isDebugDemo() && console.log(`========generating: ${srcpath} --> ${targetpath} ==========`);
@@ -47,7 +47,7 @@ exports.compile = async function (srcpath, targetpath, umdName = 'umdComponent')
         vue: 'Vue'
       }
   }).catch(e => {
-    console.log('[e] write', e.stack)
+    console.error('[e] write', e.stack)
   });
 
   isDebugDemo() && console.log(`========generated: ${srcpath} --> ${targetpath} ==========`);
