@@ -1,5 +1,6 @@
+const fs = require('fs')
 const path = require('path')
-const xml = require('xml')
+const rmdirr = require('@fibjs/rmdirr')
 
 const {getCustomizedVBox} = require('../')
 
@@ -23,4 +24,12 @@ exports.isDebugDemo = function () {
 
 exports.getVueSSRInstance = function () {
     return getCustomizedVBox().require('vue-server-renderer', __dirname)
+}
+
+exports.cleanDist = function () {
+    const base = __dirname
+    
+    fs.readdir(__dirname).forEach(dirname => {
+        rmdirr(path.resolve(base, dirname, './dist'))
+    })
 }

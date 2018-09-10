@@ -122,13 +122,16 @@ see details in [src/vbox/index.ts]
 
 ## Plugins Test Result
 
-| orignal plugin | running | comment |
+| Plugin Name | Is Valid? | Comment |
 | --- | --- | --- |
 | [rollup-plugin-buble] | ✔️ | |
 | [rollup-plugin-commonjs] | ✔️ | |
 | [rollup-plugin-pug] | ✔️ | |
-| [rollup-plugin-typescript] | ✔️ | |
 | [rollup-plugin-vue] | ✔️ | |
+| [rollup-plugin-json] | ✔️ | |
+| [rollup-plugin-graph] | ❌ | |
+| <del>[rollup-plugin-typescript]</del> | ✔️ | it's useless, rollup compile typescript file(entry or module) automatically |
+| [rollup-plugin-virtual] | ✔️  | |
 
 <!-- ❌ -->
 
@@ -163,5 +166,8 @@ Copyright (c) 2018-present, Richard
 [rollup-plugin-buble]:https://www.npmjs.com/package/rollup-plugin-buble
 [rollup-plugin-commonjs]:https://www.npmjs.com/package/rollup-plugin-commonjs
 [rollup-plugin-pug]:https://www.npmjs.com/package/rollup-plugin-pug
-[rollup-plugin-typescript]:https://www.npmjs.com/package/rollup-plugin-typescript
+[rollup-plugin-json]:https://www.npmjs.com/package/rollup-plugin-json
 [rollup-plugin-vue]:https://www.npmjs.com/package/rollup-plugin-vue
+[rollup-plugin-typescript]:https://www.npmjs.com/package/rollup-plugin-typescript
+[rollup-plugin-graph]:https://www.npmjs.com/package/rollup-plugin-graph
+[rollup-plugin-virtual]:https://www.npmjs.com/package/rollup-plugin-virtual

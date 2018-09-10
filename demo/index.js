@@ -1,6 +1,7 @@
-var rmdirr = require('@fibjs/rmdirr')
 var VueSsr = require('./_utils').getVueSSRInstance()
+var cleanDist = require('./_utils').cleanDist
 var getCustomizedVBox = require('../').getCustomizedVBox
+var registerTsCompiler = require('fib-typify').registerTsCompiler
 
 var cheerio = require('cheerio')
 var Vue = require('vue')
@@ -9,9 +10,9 @@ var test = require('test')
 test.setup()
 
 describe('cjs:package', () => {
-    before(() => {
+    after(() => {
         try {
-            rmdirr('./*/dist');
+            cleanDist()
         } catch(err) {
             console.error(err);
         }
@@ -37,9 +38,9 @@ describe('cjs:package', () => {
 })
 
 describe('umd:package', () => {
-    before(() => {
+    after(() => {
         try {
-            rmdirr('./*/dist');
+            cleanDist();
         } catch(err) {
             console.error(err);
         }
@@ -53,7 +54,7 @@ describe('umd:package', () => {
 
         assert.isFunction(bundle)
         assert.equal(bundle(), 'hello, fib-rollup')
-        assert.isTrue(Object.values(sb.modules).find(x => x === bundle) === bundle)
+        assert.equal(Object.values(sb.modules).find(x => x === bundle), bundle)
     })
 
     it('simple-ts', () => {
@@ -64,7 +65,43 @@ describe('umd:package', () => {
 
         assert.isFunction(bundle)
         assert.equal(bundle(), 'hello, fib-rollup')
-        assert.isTrue(Object.values(sb.modules).find(x => x === bundle) === bundle)
+        assert.equal(Object.values(sb.modules).find(x => x === bundle), bundle)
+    })
+
+    it('plugin:json', () => {
+        require('./umd-plugin-json/build')
+
+        var sb = getCustomizedVBox()
+        var bundle = sb.require('./umd-plugin-json/dist/bundle.js', __dirname)
+
+        assert.isFunction(bundle)
+        assert.equal(Object.values(sb.modules).find(x => x === bundle), bundle)
+
+        assert.deepEqual(bundle(), require('./umd-plugin-json/index.json'))
+    })
+
+    it('plugin:graph - invalid', () => {
+        assert.throws(() => {
+            require('./umd-plugin-graph/build')
+        })
+    })
+
+    it('plugin:virtual', () => {
+        require('./umd-plugin-virtual/build')
+
+        var sb = getCustomizedVBox()
+        registerTsCompiler(sb)
+        
+        var bundle = sb.require('./umd-plugin-virtual/dist/bundle.js', __dirname)
+
+        assert.equal(Object.values(sb.modules).find(x => x === bundle), bundle)
+
+        // used to be compared
+        var foo = sb.require('./umd-plugin-virtual/virmodule.foo', __dirname).default
+        var bar = sb.require('./umd-plugin-virtual/virmodule.bar', __dirname).default
+
+        assert.equal(Object.values(sb.modules).find(x => x.default === foo).default, foo)
+        assert.equal(Object.values(sb.modules).find(x => x.default === bar).default, bar)
     })
 
     it('mvvm framework in server-side', () => {
@@ -75,11 +112,10 @@ describe('umd:package', () => {
 
         assert.isFunction(bundle)
         var result = bundle()
+        assert.equal(Object.values(sb.modules).find(x => x === bundle), bundle)
 
         assert.property(result, 'Vue')
         assert.property(result, 'React')
-
-        assert.isTrue(Object.values(sb.modules).find(x => x === bundle) === bundle)
     })
 
     describe('vue-component ssr', () => {
