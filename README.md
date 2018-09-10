@@ -17,7 +17,11 @@ Benefited by rollup's distinctive and predictive design, fibjs can run [rollup] 
 
 Just get javascript API document in [rollupjs.org] later, before that, there're some issues you should notice. 
 
-fibjs not support all plugin of rollup(including those popular plugin such as [rollup-plugin-node-resolve]). You can alway run rollup with your own plugin, just like `fib-rollup`'s internal plugin "rollup-plugin-fibjs-resolve"(exported as 'fibjsResolve'), we also provide some [API](#API) to run existed rollup-plugin-\* packages. See details about `vbox` and `getCustomizedVBox` in [API](#API) Section.
+fibjs doesn't support all plugins of rollup(including those popular plugins such as [rollup-plugin-node-resolve]) because they use some nodejs APIs that fibjs haven't been compatible with yet.
+
+You can alway run rollup, and write your own plugin, just like `fib-rollup`'s internal plugin "rollup-plugin-fibjs-resolve"(exported as 'fibjsResolve').
+
+We also provide some [API](#API) to run existed rollup-plugin-\* packages. See details about `vbox` and `getCustomizedVBox` in [API](#API) Section.
 
 ## Usage
 
@@ -74,7 +78,7 @@ rollup running in fibjs.
 
 Virtual box, it's based on fibjs's [vm.Sandbox], see detail in [src/vbox/index.ts]. It provided some customzied global modules to make plugins running.
 
-Some of rollup-plugins can be run directly in raw fibjs's default global context, but some others must be hacked(or rewritten with fibjs). See details in (Tested Plugins)[#Tested Plugins] below
+Some of rollup-plugins can be run directly in raw fibjs's default global context, but some others must be hacked(or rewritten with fibjs). See details in [Plugins Test Result](#Plugins Test Result) below
 
 For example, in fibjs there's no `module` module, which in nodejs is internal module and used to load nodejs' module. More and more npm packages use API in `module` module of nodejs, rollup did so. So I made one patched `module` module in default virtual box, and `vbox.require('rollup', __dirname)` to make rollup running. some of rollup's plugin can be run by this vbox.
 
@@ -107,14 +111,14 @@ see details in [src/vbox/index.ts]
 ## Feature
 
 - [x] pure javascript bundle
-    - [ ] fibos tested
+    - [ ] fibos
 - [x] server-side bundle
 - [x] frontend javacript bundle
-    - [x] vue tested
-    - [ ] react tested
-    - [ ] angular tested
-    - [ ] jquery tested
-    - [ ] cheerio tested
+    - [x] vue
+    - [ ] react
+    - [ ] angular
+    - [ ] jquery
+    - [ ] cheerio
 
 ## Plugins Test Result
 
