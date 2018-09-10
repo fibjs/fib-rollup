@@ -101,6 +101,20 @@ describe('umd:package', () => {
         })
     })
 
+    it('plugin:alias', () => {
+        require('./umd-plugin-alias/build')
+
+        var sb = getCustomizedVBox()
+        registerTsCompiler(sb)
+        
+        var bundle = sb.require('./umd-plugin-alias/dist/bundle.js', __dirname)
+
+        assert.equal(Object.values(sb.modules).find(x => x === bundle), bundle)
+
+        assert.equal(bundle.a, 'a')
+        assert.equal(bundle.b, 'b')
+    })
+
     it('plugin:virtual', () => {
         require('./umd-plugin-virtual/build')
 
