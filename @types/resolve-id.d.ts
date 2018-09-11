@@ -4,14 +4,13 @@ interface RollupPluginFibjsResolve_ConsoleWarnFN {
     (...args: any[]): void
 }
 
-interface RollupPluginFibjsResolve_InternalResolveOptions {
+interface RollupPluginFibjsResolve_InternalResolveOptions extends RollupPluginFibjsResolveOptions {
     basedir: string
     packageFilter: RollupPluginFibjsResolve_PkgFilter
     readFile: RollupPluginFibjsResolve_cachedReadFile
     isFile: RollupPluginFibjsResolve_cachedIsFile
     extensions: string[]
-    // vbox: Class_SandBox
-    preserveSymlinks?: string
+    preserveSymlinks?: boolean
 }
 
 interface RollupPluginFibjsResolve_PkgFilter {
@@ -47,5 +46,5 @@ interface RollupPluginFibjsResolveOptions {
     extensions?: string[]
     modulesOnly?: boolean
 
-    // vbox?: Class_SandBox
+    vbox?: Class_SandBox
 }

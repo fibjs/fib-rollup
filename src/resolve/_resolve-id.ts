@@ -10,7 +10,13 @@ interface ResolveIdCallback {
 import { vbox } from '../../'
 
 export default function resolveId(importee: string, options: RollupPluginFibjsResolve_InternalResolveOptions, cb: ResolveIdCallback) {
-    const resolvedPath = vbox.resolve(importee, options.basedir)
+    const _vbox = options.vbox || vbox
+    
+    try {
+        const resolvedPath = _vbox.resolve(importee, options.basedir)
 
-    cb(null, resolvedPath)
+        cb(null, resolvedPath)
+    } catch (e) {
+        console.error(`resolveId Error when trying to import ${importee} on ${options.basedir}\n`, e.stack);
+    }
 }
