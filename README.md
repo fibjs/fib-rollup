@@ -130,9 +130,10 @@ see details in [src/vbox/index.ts]
 | [rollup-plugin-vue] | ✔️ | |
 | [rollup-plugin-json] | ✔️ | |
 | [rollup-plugin-graph] | ❌ | |
-| <del>[rollup-plugin-typescript]</del> | ✔️ | it's useless, rollup compile typescript file(entry or module) automatically |
+| [rollup-plugin-typescript] | ✔️ | it's useless in most cases, rollup compile typescript file(entry or module) automatically |
 | [rollup-plugin-virtual] | ✔️ | |
-| [rollup-plugin-uglify] | ❌  | no error throwed but no effect |
+| [rollup-plugin-uglify] | ❌  | |
+| [rollup-plugin-terser] | ❌  | |
 | [rollup-plugin-alias] | ✔️  | |
 
 <!-- ❌ -->
@@ -174,4 +175,5 @@ Copyright (c) 2018-present, Richard
 [rollup-plugin-graph]:https://www.npmjs.com/package/rollup-plugin-graph
 [rollup-plugin-virtual]:https://www.npmjs.com/package/rollup-plugin-virtual
 [rollup-plugin-uglify]:https://www.npmjs.com/package/rollup-plugin-uglify
+[rollup-plugin-terser]:https://www.npmjs.com/package/rollup-plugin-terser
 [rollup-plugin-alias]:https://www.npmjs.com/package/rollup-plugin-alias

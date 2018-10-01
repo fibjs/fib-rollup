@@ -24,7 +24,7 @@
   "homepage": "https://github.com/fibjs/fib-rollup#readme",
   "dependencies": {
     "is-module": "^1.0.0",
-    "rollup": "^0.63.4",
+    "rollup": "^0.66.2",
     "util-deprecate": "^1.0.2"
   },
   "devDependencies": {
@@ -40,7 +40,8 @@
     "rollup-plugin-graph": "^1.2.0",
     "rollup-plugin-json": "^3.0.0",
     "rollup-plugin-pug": "^0.1.6",
-    "rollup-plugin-uglify": "^5.0.2",
+    "rollup-plugin-terser": "^3.0.0",
+    "rollup-plugin-uglify": "^6.0.0",
     "rollup-plugin-virtual": "^1.0.1",
     "rollup-plugin-vue": "^4.3.2",
     "stylus": "^0.54.5",

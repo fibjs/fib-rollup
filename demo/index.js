@@ -80,19 +80,16 @@ describe('umd:package', () => {
         assert.deepEqual(bundle(), require('./umd-plugin-json/index.json'))
     })
 
-    it('plugin:uglify - noerror', () => {
-        require('./umd-plugin-uglify/build')
+    it('plugin:uglify - invalid', () => {
+        assert.throws(() => {
+            require('./umd-plugin-uglify/build')
+        })
+    })
 
-        var sb = getCustomizedVBox()
-        var bundle = sb.require('./umd-plugin-uglify/dist/bundle.js', __dirname)
-
-        assert.isObject(bundle)
-        assert.isFunction(bundle.foo)
-        assert.isFunction(bundle.bar)
-
-        assert.equal(bundle.bar(), bundle.foo)
-
-        assert.equal(Object.values(sb.modules).find(x => x === bundle), bundle)
+    it('plugin:terser - invalid', () => {
+        assert.throws(() => {
+            require('./umd-plugin-terser/build')
+        })
     })
 
     it('plugin:graph - invalid', () => {
