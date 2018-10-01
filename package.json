@@ -5,8 +5,9 @@
   "main": "./lib/index.js",
   "scripts": {
     "build": "fib-typify src -c .typifyrc.json -o lib",
+    "test": "fibjs demo/index.js",
     "test:clean": "fibjs ./demo/clean.js",
-    "ci": "fibjs demo/index.js"
+    "ci": "npm run build && npm run test"
   },
   "repository": {
     "type": "git",
