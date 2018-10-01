@@ -61,5 +61,6 @@ typings/
 .next
 
 demo/**/dist
+lib/*
 
 package-lock.json
