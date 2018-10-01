@@ -27,6 +27,8 @@ exports.getVueSSRInstance = function () {
 }
 
 exports.cleanDist = function () {
+    if (process.env.FIB_ROLLUP_DEBUG_NO_CLEAN) return ;
+    
     const base = __dirname
     
     fs.readdir(__dirname).forEach(dirname => {

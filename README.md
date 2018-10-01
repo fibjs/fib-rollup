@@ -111,11 +111,9 @@ see details in [src/vbox/index.ts]
 
 fibjs's load-mechanism is based on [vm.Sandbox], which distinguished from `module` module in nodejs. I have to write the plugin with same API with [rollup-plugin-node-resolve], but only for fibjs.
 
-```typescript
-// type
-fibjsResolve(options: RollupPluginFibjsResolveOptions = {})
+**type**: `fibjsResolve(options: RollupPluginFibjsResolveOptions = {})`
 
-// sample
+```javascript
 const path = require('path');
 const { default: rollup, plugins } = require('../../')
 
@@ -128,6 +126,30 @@ const bundle = await rollup.rollup({
         plugins['rollup-plugin-fibjs-resolve'](),
         // use it with rollup-plugin-commonjs
         commonjs()
+    ]
+}).catch(e => console.error(e));
+```
+**rollup-plugin-uglify-js**
+---
+
+`uglify-js` wrapper for rollup on fibjs.
+
+```javascript
+const path = require('path');
+const { default: rollup, plugins } = require('../../')
+
+const buble = require('rollup-plugin-buble')
+const commonjs = require('rollup-plugin-commonjs');
+
+const bundle = await rollup.rollup({
+    input: path.resolve(__dirname, './index.ts'),
+    external: ['coroutine'],
+    plugins: [
+        plugins['rollup-plugin-fibjs-resolve'](),
+        // transpile es201X feature such as template string
+        buble(),
+        commonjs(),
+        plugins['rollup-plugin-uglify-js']()
     ]
 }).catch(e => console.error(e));
 ```

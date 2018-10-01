@@ -3,7 +3,6 @@ const { default: rollup, plugins } = require('../../')
 
 const buble = require('rollup-plugin-buble')
 const commonjs = require('rollup-plugin-commonjs');
-const { uglify } = require('rollup-plugin-uglify');
 
 const bundle = await rollup.rollup({
     input: path.resolve(__dirname, './index.ts'),
@@ -12,7 +11,7 @@ const bundle = await rollup.rollup({
         plugins['rollup-plugin-fibjs-resolve'](),
         buble(),
         commonjs(),
-        uglify()
+        plugins['rollup-plugin-uglify-js']()
     ]
 }).catch(e => console.error(e));
 

@@ -68,6 +68,17 @@ describe('umd:package', () => {
         assert.equal(Object.values(sb.modules).find(x => x === bundle), bundle)
     })
 
+    it('iplugin:uglify-js', () => {
+        require('./umd-iplugin-uglify-js/build')
+
+        var sb = getCustomizedVBox()
+        var bundle = sb.require('./umd-iplugin-uglify-js/dist/bundle.js', __dirname)
+
+        assert.property(bundle, 'foo')
+        assert.property(bundle, 'bar')
+        assert.equal(bundle.bar(), bundle.foo)
+    })
+
     it('plugin:json', () => {
         require('./umd-plugin-json/build')
 

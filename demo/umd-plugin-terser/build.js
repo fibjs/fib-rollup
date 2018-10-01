@@ -1,6 +1,7 @@
 const path = require('path');
 const { default: rollup, plugins } = require('../../')
 
+const buble = require('rollup-plugin-buble')
 const commonjs = require('rollup-plugin-commonjs');
 const { terser } = require('rollup-plugin-terser');
 
@@ -9,6 +10,7 @@ const bundle = await rollup.rollup({
     external: ['coroutine'],
     plugins: [
         plugins['rollup-plugin-fibjs-resolve'](),
+        buble(),
         commonjs(),
         terser()
     ]
