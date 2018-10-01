@@ -1,6 +1,6 @@
 const util = require('util');
 const path = require('path');
-const { default: rollup, fibjsResolve } = require('../../')
+const { default: rollup, plugins } = require('../../')
 
 const commonjs = require('rollup-plugin-commonjs');
 const graph = require('rollup-plugin-graph');
@@ -10,7 +10,7 @@ const bundle = await rollup.rollup({
     external: [].concat(util.buildInfo().modules),
     plugins: [
         graph({prune: true}),
-        fibjsResolve(),
+        plugins['rollup-plugin-fibjs-resolve'](),
         commonjs()
     ]
 }).catch(e => console.error(e));

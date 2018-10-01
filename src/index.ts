@@ -7,6 +7,7 @@ export {
 
 import { vbox } from './'
 
-export const fibjsResolve = require('./resolve')
+export { default as plugins } from './plugins'
+export const fibjsResolve = require('./').plugins['rollup-plugin-fibjs-resolve']
 
 export default vbox.require('rollup', __dirname);

@@ -1,7 +1,7 @@
 const fs = require('fs');
 const util = require('util');
 const path = require('path');
-const { default: rollup, fibjsResolve } = require('../../')
+const { default: rollup, plugins } = require('../../')
 
 const commonjs = require('rollup-plugin-commonjs');
 const alias = require('rollup-plugin-alias');
@@ -14,7 +14,7 @@ const bundle = await rollup.rollup({
             '@': './alias',
             resolve: ['.ts']
         }),
-        fibjsResolve(),
+        plugins['rollup-plugin-fibjs-resolve'](),
         commonjs()
     ]
 }).catch(e => console.error(e));

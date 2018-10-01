@@ -1,7 +1,7 @@
 const fs = require('fs');
 const util = require('util');
 const path = require('path');
-const { default: rollup, fibjsResolve } = require('../../')
+const { default: rollup, plugins } = require('../../')
 
 const commonjs = require('rollup-plugin-commonjs');
 const buble = require('rollup-plugin-buble');
@@ -15,7 +15,7 @@ const bundle = await rollup.rollup({
             foo: fs.readTextFile( path.resolve(__dirname, './virmodule.foo.ts' ) ),
             'bar.js': fs.readTextFile( path.resolve(__dirname, './virmodule.bar.ts') ),
         }),
-        fibjsResolve(),
+        plugins['rollup-plugin-fibjs-resolve'](),
         commonjs()
     ]
 }).catch(e => console.error(e));

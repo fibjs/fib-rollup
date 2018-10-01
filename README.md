@@ -34,7 +34,7 @@ npm i -D fib-rollup
 sample build config
 
 ```javascript
-const { default: rollup, fibjsResolve } = require('fib-rollup')
+const { default: rollup, plugins } = require('fib-rollup')
 
 const commonjs = require('rollup-plugin-commonjs');
 
@@ -44,7 +44,7 @@ const bundle = await rollup.rollup({
     input: path.resolve(__dirname, './index.js'),
     external: ['coroutine'],
     plugins: [
-        fibjsResolve(),
+        plugins['rollup-plugin-fibjs-resolve'](),
         commonjs()
     ]
 }).catch(e => console.error(e));
@@ -68,7 +68,7 @@ view more demos in [demo/]
 
 would be supported in the future.
 
-## API
+## APIs
 
 * module default
 
@@ -90,11 +90,7 @@ get your own vbox by this API, vbox has some patched global module(such as `modu
 
 * `fibjsResolve(options: RollupPluginFibjsResolveOptions = {})`
 
-[rollup-plugin-node-resolve]'s fibjs version.
-
-[rollup-plugin-node-resolve] depends on nodejs's `module` module API heavily, it's hard, or say, impossible to provide one compatible `module` module to simulate [load-mechanism in nodejs] and make [rollup-plugin-node-resolve] running.
-
-fibjs's load-mechanism is based on [vm.Sandbox], which distinguished from `module` module in nodejs. I have to write the plugin with same API with [rollup-plugin-node-resolve], but only for fibjs.
+equivalent to internal plugin `rollup-plugin-fibjs-resolve`
 
 * `recommendedVBoxModules`
 
@@ -103,6 +99,38 @@ see details in [src/vbox/index.ts]
 * `recommendedVBoxModuleFallback`
 
 see details in [src/vbox/index.ts]
+
+## Internal Plugins
+
+**rollup-plugin-fibjs-resolve**
+---
+
+[rollup-plugin-node-resolve]'s fibjs version.
+
+[rollup-plugin-node-resolve] depends on nodejs's `module` module API heavily, it's hard, or say, impossible to provide one compatible `module` module to simulate [load-mechanism in nodejs] and make [rollup-plugin-node-resolve] running.
+
+fibjs's load-mechanism is based on [vm.Sandbox], which distinguished from `module` module in nodejs. I have to write the plugin with same API with [rollup-plugin-node-resolve], but only for fibjs.
+
+```typescript
+// type
+fibjsResolve(options: RollupPluginFibjsResolveOptions = {})
+
+// sample
+const path = require('path');
+const { default: rollup, plugins } = require('../../')
+
+const commonjs = require('rollup-plugin-commonjs');
+
+const bundle = await rollup.rollup({
+    input: path.resolve(__dirname, './index.js'),
+    external: ['coroutine'],
+    plugins: [
+        plugins['rollup-plugin-fibjs-resolve'](),
+        // use it with rollup-plugin-commonjs
+        commonjs()
+    ]
+}).catch(e => console.error(e));
+```
 
 ## Document
 

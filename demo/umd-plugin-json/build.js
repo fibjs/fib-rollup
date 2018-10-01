@@ -1,5 +1,5 @@
 const path = require('path');
-const { default: rollup, fibjsResolve } = require('../../')
+const { default: rollup, plugins } = require('../../')
 
 const commonjs = require('rollup-plugin-commonjs');
 const json = require('rollup-plugin-json');
@@ -9,7 +9,7 @@ const bundle = await rollup.rollup({
     external: ['coroutine'],
     plugins: [
         json(),
-        fibjsResolve(),
+        plugins['rollup-plugin-fibjs-resolve'](),
         commonjs()
     ]
 }).catch(e => console.error(e));
