@@ -18,7 +18,6 @@ const {
     code,
     map
 } = await bundle.generate({
-    file: path.resolve(__dirname, './dist/bundle.js'),
     format: 'cjs',
     name: 'simpleTs'
 }).catch(e => console.error(e));

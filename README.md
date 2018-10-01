@@ -51,7 +51,6 @@ const bundle = await rollup.rollup({
 
 // generate code and map by `bundle.generate`
 const { code, map } = await bundle.generate({
-    file: path.resolve(__dirname, './dist/bundle.js'),
     format: 'cjs'
 }).catch(e => console.error(e));
 

@@ -22,7 +22,6 @@ const {
     code,
     map
 } = await bundle.generate({
-    file: path.resolve(__dirname, './dist/bundle.js'),
     format: 'umd',
     name: 'simple'
 }).catch(e => console.error(e));
