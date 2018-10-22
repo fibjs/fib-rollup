@@ -153,6 +153,13 @@ const bundle = await rollup.rollup({
 }).catch(e => console.error(e));
 ```
 
+**rollup-plugin-babel-standalone(Developing...)**
+---
+
+use `babel-standalone` to transform javascript
+
+to be continued :)
+
 ## Document
 
 [rollupjs.org]
