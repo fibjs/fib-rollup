@@ -1,7 +1,17 @@
 
-v0.1.0 / 2018-10-01
+v0.2.0 / 2018-10-23
 ==================
 
+  * upgrade dependencies.
+  * finish basic capability of internal plugin 'rollup-plugin-babel-standalone'.
+  * [README.md]add plan declartion about 'rollup-plugin-babel-standalone'
+  * add test case about rollup-plugin-buble.
+  * [package.json]add 'prepublishOnly' scripts
+
+v0.1.0 / 2018-10-01
+===================
+
+  * Release v0.1.0
   * [pakcage.json] fix scripts 'ci'
   * sample code clean.
   * add internal plugin 'rollup-plugin-uglify-js'
