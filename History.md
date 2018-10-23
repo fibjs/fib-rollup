@@ -1,7 +1,13 @@
 
-v0.2.0 / 2018-10-23
+v0.2.1 / 2018-10-23
 ==================
 
+
+
+v0.2.0 / 2018-10-23
+===================
+
+  * Release v0.2.0
   * upgrade dependencies.
   * finish basic capability of internal plugin 'rollup-plugin-babel-standalone'.
   * [README.md]add plan declartion about 'rollup-plugin-babel-standalone'
