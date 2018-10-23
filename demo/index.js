@@ -216,4 +216,6 @@ describe('umd:package', () => {
     })
 })
 
+require('./umd-iplugin-babel-standalone/index.spec')
+
 test.run(console.DEBUG)

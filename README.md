@@ -153,12 +153,35 @@ const bundle = await rollup.rollup({
 }).catch(e => console.error(e));
 ```
 
-**rollup-plugin-babel-standalone(Developing...)**
+**rollup-plugin-babel-standalone(Beta)**
 ---
 
 use `babel-standalone` to transform javascript
 
-to be continued :)
+```javascript
+const path = require('path');
+const { default: rollup, plugins } = require('../../')
+
+const commonjs = require('rollup-plugin-commonjs');
+
+const bundle = await rollup.rollup({
+    input: path.resolve(__dirname, './index.ts'),
+    external: ['coroutine'],
+    plugins: [
+        plugins['rollup-plugin-fibjs-resolve'](),
+        // transpile es201X feature such as template string
+        plugins['rollup-plugin-babel-standalone']({
+            // ...transform options, you can also set it in `$CWD/.babelrc` or `path.dirname(input)/.babelrc`
+            presets: [
+                ["es2015", { "modules": false }],
+                // ...
+            ]
+        }),
+        commonjs(),
+        plugins['rollup-plugin-uglify-js']()
+    ]
+}).catch(e => console.error(e));
+```
 
 ## Document
 
@@ -180,7 +203,7 @@ to be continued :)
 
 | Plugin Name | Is Valid? | Comment |
 | --- | --- | --- |
-| [rollup-plugin-buble] | ✔️ | |
+| [rollup-plugin-buble] | ✔️ | valid but it's not recommended to use with `http.Server`, it would lead to memory leak sometimes. |
 | [rollup-plugin-commonjs] | ✔️ | |
 | [rollup-plugin-pug] | ✔️ | |
 | [rollup-plugin-vue] | ✔️ | |

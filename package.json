@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/fibjs/fib-rollup#readme",
   "dependencies": {
+    "@babel/standalone": "^7.1.0",
     "is-module": "^1.0.0",
     "rollup": "^0.66.2",
     "uglify-js": "^3.4.9",
@@ -33,7 +34,7 @@
   "devDependencies": {
     "@fibjs/ci": "^2.1.0",
     "@fibjs/rmdirr": "^2.0.0",
-    "@types/fibjs": "^0.26.0",
+    "@types/fibjs": "^0.26.5",
     "cheerio": "^1.0.0-rc.2",
     "fib-typify": "^0.3.0",
     "react": "^16.4.1",
