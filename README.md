@@ -201,19 +201,19 @@ const bundle = await rollup.rollup({
 
 ## Plugins Test Result
 
-| Plugin Name | Is Valid? | Comment |
-| --- | --- | --- |
-| [rollup-plugin-buble] | ✔️ | valid but it's not recommended to use with `http.Server`, it would lead to memory leak sometimes. |
-| [rollup-plugin-commonjs] | ✔️ | |
-| [rollup-plugin-pug] | ✔️ | |
-| [rollup-plugin-vue] | ✔️ | |
-| [rollup-plugin-json] | ✔️ | |
-| [rollup-plugin-graph] | ❌ | |
-| [rollup-plugin-typescript] | ✔️ | it's useless in most cases, rollup compile typescript file(entry or module) automatically |
-| [rollup-plugin-virtual] | ✔️ | |
-| [rollup-plugin-uglify] | ❌  | |
-| [rollup-plugin-terser] | ❌  | |
-| [rollup-plugin-alias] | ✔️  | |
+| Plugin Name | required version | Is Valid? | Comment |
+| --- | --- | --- | --- |
+| [rollup-plugin-buble] | `v0.2.0`  | ✔️ | valid but it's not recommended to use with `http.Server`, it would lead to memory leak sometimes. |
+| [rollup-plugin-commonjs] | `v0.2.0`  | ✔️ | |
+| [rollup-plugin-pug] | `v0.2.0`  | ✔️ | |
+| [rollup-plugin-vue] | `v0.2.0`  | ✔️ | |
+| [rollup-plugin-json] | `v0.2.0`  | ✔️ | |
+| [rollup-plugin-graph] | -  | ❌ | |
+| [rollup-plugin-typescript] | `v0.2.2`  | ✔️ | **pass `extensions: ['.ts']`**; <br> rollup compile typescript file(entry or module) automatically. |
+| [rollup-plugin-virtual] | `v0.2.0`  | ✔️ | |
+| [rollup-plugin-uglify] | -  | ❌  | |
+| [rollup-plugin-terser] | -  | ❌  | |
+| [rollup-plugin-alias] | `v0.2.0`  | ✔️  | |
 
 <!-- ❌ -->
 
