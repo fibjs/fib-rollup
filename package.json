@@ -45,10 +45,13 @@
     "rollup-plugin-json": "^3.1.0",
     "rollup-plugin-pug": "^0.1.6",
     "rollup-plugin-terser": "^3.0.0",
+    "rollup-plugin-typescript": "^1.0.0",
     "rollup-plugin-uglify": "^6.0.0",
     "rollup-plugin-virtual": "^1.0.1",
     "rollup-plugin-vue": "^4.3.2",
     "stylus": "^0.54.5",
+    "tslib": "^1.9.3",
+    "typescript": "^3.1.6",
     "vue": "^2.5.17",
     "vue-server-renderer": "^2.5.17",
     "vue-template-compiler": "^2.5.17"

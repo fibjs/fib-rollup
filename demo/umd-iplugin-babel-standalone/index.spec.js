@@ -18,11 +18,11 @@ describe('umd-iplugin-babel-standalone', () => {
     })
 
     it('default', () => {
-        var sb = getCustomizedVBox()
+        var vbox = getCustomizedVBox()
         
-        var bundle = sb.require('./dist/default/bundle.js', __dirname)
+        var bundle = vbox.require('./dist/default/bundle.js', __dirname)
 
-        assert.equal(Object.values(sb.modules).find(x => x === bundle), bundle)
+        assert.equal(Object.values(vbox.modules).find(x => x === bundle), bundle)
 
         assert.isFunction(bundle.foo)
 
@@ -32,11 +32,11 @@ describe('umd-iplugin-babel-standalone', () => {
     })
 
     it('babelrc', () => {
-        var sb = getCustomizedVBox()
+        var vbox = getCustomizedVBox()
         
-        var bundle = sb.require('./dist/babelrc/bundle.js', __dirname)
+        var bundle = vbox.require('./dist/babelrc/bundle.js', __dirname)
 
-        assert.equal(Object.values(sb.modules).find(x => x === bundle), bundle)
+        assert.equal(Object.values(vbox.modules).find(x => x === bundle), bundle)
 
         assert.isFunction(bundle.foo)
 

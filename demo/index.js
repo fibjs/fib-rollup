@@ -126,6 +126,25 @@ describe('umd:package', () => {
         assert.equal(bundle.bar_var, 123)
     })
 
+    it('plugin:typescript', () => {
+        require('./umd-plugin-typescript/build')
+
+        var sb = getCustomizedVBox()
+        registerTsCompiler(sb)
+        
+        var bundle = sb.require('./umd-plugin-typescript/dist/bundle.js', __dirname)
+
+        assert.equal(Object.values(sb.modules).find(x => x === bundle), bundle)
+
+        assert.isFunction(bundle.foo)
+
+        assert.equal(bundle.bar_constant, 123)
+        assert.equal(bundle.bar_let, 123)
+        assert.equal(bundle.bar_var, 123)
+
+        assert.isObject(bundle.required)
+    })
+
     it('plugin:alias', () => {
         require('./umd-plugin-alias/build')
 
