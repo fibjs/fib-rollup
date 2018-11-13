@@ -1,5 +1,5 @@
 const path = require('path');
-const { default: rollup, plugins } = require('../../')
+const { default: rollup, plugins } = require('../../../lib')
 
 const commonjs = require('rollup-plugin-commonjs');
 
@@ -33,7 +33,7 @@ const commonjs = require('rollup-plugin-commonjs');
     // console.log('========writing==========');
 
     await bundle.write({
-        file: path.resolve(__dirname, `./dist/${basedir}/bundle.js`),
+        file: path.resolve(__dirname, `../dist/${basedir}/bundle.js`),
         format: 'umd',
         name: 'bableStandaloneTest'
     }).catch(e => console.error(e.stack));

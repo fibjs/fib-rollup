@@ -1,12 +1,19 @@
+const fs = require('fs');
+const util = require('util');
 const path = require('path');
-const { default: rollup, plugins } = require('../../')
+const { default: rollup, plugins } = require('../../../lib')
 
 const commonjs = require('rollup-plugin-commonjs');
+const alias = require('rollup-plugin-alias');
 
 const bundle = await rollup.rollup({
     input: path.resolve(__dirname, './index.ts'),
-    external: ['coroutine'],
+    external: [].concat(util.buildInfo().modules),
     plugins: [
+        alias({
+            '@': './alias',
+            resolve: ['.ts']
+        }),
         plugins['rollup-plugin-fibjs-resolve'](),
         commonjs()
     ]
@@ -18,8 +25,8 @@ const {
     code,
     map
 } = await bundle.generate({
-    format: 'cjs',
-    name: 'simpleTs'
+    format: 'umd',
+    name: 'simple'
 }).catch(e => console.error(e));
 
 // console.log('========generated==========');
@@ -27,8 +34,9 @@ const {
 // console.log('========writing==========');
 
 await bundle.write({
-    file: path.resolve(__dirname, './dist/bundle.js'),
-    format: 'cjs'
+    file: path.resolve(__dirname, '../dist/bundle.js'),
+    format: 'umd',
+    name: 'simple'
 }).catch(e => console.error(e));
 
 // console.log('========written==========');

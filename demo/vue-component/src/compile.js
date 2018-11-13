@@ -1,6 +1,6 @@
-const { isDebugDemo } = require('../_utils')
+const { isDebugDemo } = require('../../_utils')
 
-const {default: rollup, fibjsResolve, getCustomizedVBox} = require('../../')
+const {default: rollup, fibjsResolve, getCustomizedVBox} = require('../../../lib')
 
 const vbox = getCustomizedVBox({
   prettier: {

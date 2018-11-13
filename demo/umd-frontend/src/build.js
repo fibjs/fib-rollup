@@ -1,6 +1,6 @@
-const { resolveFromCurdir, isDebugDemo } = require('../_utils')
+const { resolveFromCurdir, isDebugDemo } = require('../../_utils')
 
-const {default: rollup, fibjsResolve} = require('../../')
+const {default: rollup, fibjsResolve} = require('../../../lib')
 
 const buble = require('rollup-plugin-buble')
 const commonjs = require('rollup-plugin-commonjs')
@@ -20,7 +20,7 @@ const bundle = await rollup.rollup({
 isDebugDemo() && console.log('========generating==========');
 
 await bundle.write({
-    file: resolveFromCurdir(__dirname)('./dist/bundle.js'),
+    file: resolveFromCurdir(__dirname)('../dist/bundle.js'),
     format: 'umd',
     name: 'frontend'
 });

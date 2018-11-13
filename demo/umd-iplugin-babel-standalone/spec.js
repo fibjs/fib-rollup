@@ -1,7 +1,7 @@
 const test = require('test')
 test.setup()
 
-const getCustomizedVBox = require('../../').getCustomizedVBox
+const getCustomizedVBox = require('../../lib').getCustomizedVBox
 const { cleanDist } = require('../_utils')
 
 describe('umd-iplugin-babel-standalone', () => {
@@ -14,7 +14,7 @@ describe('umd-iplugin-babel-standalone', () => {
     })
     
     before(() => {
-        require('./build')
+        require('./src/build')
     })
 
     it('default', () => {

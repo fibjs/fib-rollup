@@ -1,17 +1,17 @@
+const util = require('util');
 const path = require('path');
-const { default: rollup, plugins } = require('../../')
+const { default: rollup, plugins } = require('../../../lib')
 
-const buble = require('rollup-plugin-buble')
 const commonjs = require('rollup-plugin-commonjs');
+const graph = require('rollup-plugin-graph');
 
 const bundle = await rollup.rollup({
     input: path.resolve(__dirname, './index.ts'),
-    external: ['coroutine'],
+    external: [].concat(util.buildInfo().modules),
     plugins: [
+        graph({prune: true}),
         plugins['rollup-plugin-fibjs-resolve'](),
-        buble(),
-        commonjs(),
-        plugins['rollup-plugin-uglify-js']()
+        commonjs()
     ]
 }).catch(e => console.error(e));
 
@@ -30,7 +30,7 @@ const {
 // console.log('========writing==========');
 
 await bundle.write({
-    file: path.resolve(__dirname, './dist/bundle.js'),
+    file: path.resolve(__dirname, '../dist/bundle.js'),
     format: 'umd',
     name: 'simple'
 }).catch(e => console.error(e));
