@@ -1,7 +1,5 @@
 var cleanDist = require('../_utils').cleanDist
 
-var registerTsCompiler = require('fib-typify').registerTsCompiler
-
 var test = require('test')
 test.setup()
 
