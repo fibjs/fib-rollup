@@ -87,10 +87,6 @@ default patched module is `recommendedVBoxModules`, see details in [src/vbox/ind
 
 get your own vbox by this API, vbox has some patched global module(such as `module`, `util`), but sometimes you need to another version patched global modules.
 
-* `fibjsResolve(options: RollupPluginFibjsResolveOptions = {})`
-
-equivalent to internal plugin `rollup-plugin-fibjs-resolve`
-
 * `recommendedVBoxModules`
 
 see details in [src/vbox/index.ts]
@@ -110,13 +106,11 @@ see details in [src/vbox/index.ts]
 
 fibjs's load-mechanism is based on [vm.Sandbox], which distinguished from `module` module in nodejs. I have to write the plugin with same API with [rollup-plugin-node-resolve], but only for fibjs.
 
-**type**: `fibjsResolve(options: RollupPluginFibjsResolveOptions = {})`
+**type**: `plugins['rollup-plugin-fibjs-resolve'](options: RollupPluginFibjsResolveOptions = {})`
 
 ```javascript
 const path = require('path');
 const { default: rollup, plugins } = require('../../')
-
-const commonjs = require('rollup-plugin-commonjs');
 
 const bundle = await rollup.rollup({
     input: path.resolve(__dirname, './index.js'),
@@ -124,7 +118,7 @@ const bundle = await rollup.rollup({
     plugins: [
         plugins['rollup-plugin-fibjs-resolve'](),
         // use it with rollup-plugin-commonjs
-        commonjs()
+        require('rollup-plugin-commonjs')()
     ]
 }).catch(e => console.error(e));
 ```
@@ -214,6 +208,17 @@ const bundle = await rollup.rollup({
 | [rollup-plugin-uglify] | -  | ❌  | |
 | [rollup-plugin-terser] | -  | ❌  | |
 | [rollup-plugin-alias] | `v0.2.0`  | ✔️  | |
+
+## Proxy Plugins
+
+There're some plugins which cannot be required in fibjs's global context because of module incompatibility between fibjs and nodejs, but they can be required and run in special sandbox. I collect some plugins that must be required by special sandbox.
+
+Access them by `require('fib-rollup').pplugin[PLUGIN_name]`, e.g. `require('fib-rollup').pplugin['rollup-plugin-vue']`
+
+| Plugin Name | required version | Is Valid? | Comment |
+| --- | --- | --- | --- |
+| [rollup-plugin-vue] | `v0.2.3`  | ✔️ | |
+
 
 <!-- ❌ -->
 

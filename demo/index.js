@@ -15,6 +15,9 @@ describe('all', () => {
     run('./cjs-simple/spec')
     run('./cjs-simple-ts/spec')
 
+    run('./vue-component/spec')
+    // run('./fe-pplugin-postcss/spec')
+
     run('./umd-simple/spec')
     run('./umd-simple-ts/spec')
 
@@ -32,8 +35,6 @@ describe('all', () => {
     run('./umd-plugin-graph/spec')
 
     run('./umd-frontend/spec')
-
-    run('./vue-component/spec')
 })
 
 if (require.main === module) {

@@ -1,14 +1,14 @@
 const { isDebugDemo } = require('../../_utils')
 
-const {default: rollup, fibjsResolve, getCustomizedVBox} = require('../../../lib')
+const {default: rollup, pplugins, fibjsResolve} = require('../../../lib')
 
-const vbox = getCustomizedVBox({
-  prettier: {
-    format: (content) => content
-  }
-})
+// const vbox = getCustomizedVBox({
+//   prettier: {
+//     format: (content) => content
+//   }
+// })
 const commonjs = require('rollup-plugin-commonjs')
-const vuePlugin = vbox.require('rollup-plugin-vue', __dirname).default
+const vuePlugin = pplugins['rollup-plugin-vue'] //, __dirname).default
 const pugjs = require('rollup-plugin-pug')
 
 exports.compile = async function (srcpath, targetpath, umdName = 'umdComponent') {
