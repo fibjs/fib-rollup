@@ -1,6 +1,6 @@
 const { resolveFromCurdir, isDebugDemo } = require('../../_utils')
 
-const {default: rollup, fibjsResolve} = require('../../../lib')
+const {default: rollup, plugins} = require('../../../lib')
 
 const buble = require('rollup-plugin-buble')
 const commonjs = require('rollup-plugin-commonjs')
@@ -9,7 +9,7 @@ const bundle = await rollup.rollup({
     input: resolveFromCurdir(__dirname)('./index.js'),
     external: ['coroutine'],
     plugins: [
-        fibjsResolve({
+        plugins['rollup-plugin-fibjs-resolve']({
             browser: true
         }),
         buble(),

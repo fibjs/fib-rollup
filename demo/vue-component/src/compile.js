@@ -1,8 +1,8 @@
 const { isDebugDemo } = require('../../_utils')
 
-const {default: rollup, fibjsResolve, getCustomizedVBox} = require('../../../lib')
+const {default: rollup, plugins, utils} = require('../../../lib')
 
-const vbox = getCustomizedVBox({
+const vbox = utils.vbox.getCustomizedVBox({
   prettier: {
     format: (content) => content
   }
@@ -26,7 +26,7 @@ exports.compile = async function (srcpath, targetpath, umdName = 'umdComponent')
             }
           }),
           pugjs(),
-          fibjsResolve({
+          plugins['rollup-plugin-fibjs-resolve']({
               browser: true
           }),
           commonjs()

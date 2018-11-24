@@ -8,7 +8,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 const ES6_BROWSER_EMPTY = resolve(__dirname, '../src/empty.js');
-const CONSOLE_WARN: RollupPluginFibjsResolve_ConsoleWarnFN = (...args) => console.warn(...args); // eslint-disable-line no-console
+const CONSOLE_WARN: FibRollupResolve.RollupPluginFibjsResolve_ConsoleWarnFN = (...args) => console.warn(...args); // eslint-disable-line no-console
 const exts = ['.js', '.json', '.jsc', '.wasm'];
 
 let readFileCache = {};
@@ -46,7 +46,7 @@ function cachedIsFile(file, cb) {
     isFileCache[file].then(contents => cb(null, contents), cb);
 }
 
-function fibjsResolve(options: RollupPluginFibjsResolveOptions = {}) {
+function fibjsResolve(options: FibRollupResolve.RollupPluginFibjsResolveOptions = {}) {
     const useModule = options.module !== false;
     const useMain = options.main !== false;
     const useJsnext = options.jsnext === true;
@@ -63,7 +63,7 @@ function fibjsResolve(options: RollupPluginFibjsResolveOptions = {}) {
         : null;
     const browserMapCache = {};
 
-    const onwarn: RollupPluginFibjsResolve_ConsoleWarnFN = options.onwarn || CONSOLE_WARN;
+    const onwarn: FibRollupResolve.RollupPluginFibjsResolve_ConsoleWarnFN = options.onwarn || CONSOLE_WARN;
 
     if (options.skip) {
         throw new Error('options.skip is no longer supported — you should use the main Rollup `external` option instead');
@@ -78,7 +78,7 @@ function fibjsResolve(options: RollupPluginFibjsResolveOptions = {}) {
     return {
         name: 'fibjs-resolve',
 
-        options(options: RollupPluginFibjsResolveOptions) {
+        options(options: FibRollupResolve.RollupPluginFibjsResolveOptions) {
             preserveSymlinks = options.preserveSymlinks;
         },
 
@@ -123,11 +123,11 @@ function fibjsResolve(options: RollupPluginFibjsResolveOptions = {}) {
 
             return new Promise((fulfil, reject) => {
                 let disregardResult = false;
-                let packageBrowserField: BooleanableVar = false;
+                let packageBrowserField: FibRollupResolve.BooleanableVar = false;
 
-                const resolveOptions: RollupPluginFibjsResolve_InternalResolveOptions = {
+                const resolveOptions: FibRollupResolve.RollupPluginFibjsResolve_InternalResolveOptions = {
                     basedir: dirname(importer),
-                    packageFilter(pkg: RollupPluginFibjsResolve_PkgInfo, pkgPath: string) {
+                    packageFilter(pkg: FibRollupResolve.RollupPluginFibjsResolve_PkgInfo, pkgPath: string) {
                         const pkgRoot = dirname(pkgPath);
                         if (options.browser && typeof pkg.browser === 'object') {
                             packageBrowserField = Object.keys(pkg.browser).reduce((browser, key) => {

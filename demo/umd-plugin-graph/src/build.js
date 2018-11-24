@@ -7,7 +7,7 @@ const graph = require('rollup-plugin-graph');
 
 const bundle = await rollup.rollup({
     input: path.resolve(__dirname, './index.ts'),
-    external: [].concat(util.buildInfo().modules),
+    external: [].concat(require('@fibjs/builtin-modules')),
     plugins: [
         graph({prune: true}),
         plugins['rollup-plugin-fibjs-resolve'](),

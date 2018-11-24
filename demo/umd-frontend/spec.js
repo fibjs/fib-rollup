@@ -3,7 +3,7 @@ var cleanDist = require('../_utils').cleanDist
 var test = require('test')
 test.setup()
 
-var { getCustomizedVBox } = require('../../')
+var { getCustomizedVBox } = require('../../').utils.vbox
 
 describe('umd-frontend', () => {
     after(() => {

@@ -3,6 +3,7 @@
   "version": "0.2.2",
   "description": "rollup wrapper of fibjs",
   "main": "./lib/index.js",
+  "types": "@types/index.d.ts",
   "scripts": {
     "build": "fib-typify src -c .typifyrc.json -o lib",
     "test": "fibjs demo/index.js",
@@ -26,6 +27,7 @@
   "homepage": "https://github.com/fibjs/fib-rollup#readme",
   "dependencies": {
     "@babel/standalone": "^7.1.0",
+    "@fibjs/builtin-modules": "^0.1.0",
     "is-module": "^1.0.0",
     "rollup": "^0.66.6",
     "uglify-js": "^3.4.9",
@@ -62,12 +64,13 @@
     "vue": "*"
   },
   "ci": {
-    "type": "travis",
+    "type": "travis, appveyor",
     "version": [
+      "0.26.0",
       "0.26.1"
     ]
   },
   "engines": {
-    "fibjs": ">=0.26.1"
+    "fibjs": ">=0.26.0"
   }
 }

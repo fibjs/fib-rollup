@@ -8,7 +8,7 @@ const alias = require('rollup-plugin-alias');
 
 const bundle = await rollup.rollup({
     input: path.resolve(__dirname, './index.ts'),
-    external: [].concat(util.buildInfo().modules),
+    external: [].concat(require('@fibjs/builtin-modules')),
     plugins: [
         alias({
             '@': './alias',

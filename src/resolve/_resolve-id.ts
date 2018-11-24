@@ -1,15 +1,6 @@
-/// <reference path="../../@types/resolve-id.d.ts" />
+import { getCustomizedVBox } from "../utils/vbox";
 
-import { getCustomizedVBox } from "../vbox";
-
-// import * as path from 'path'
-// import * as vm from 'vm'
-
-interface ResolveIdCallback {
-    (err: Error, code: string): void
-}
-
-function requireAsPlain (buf: Class_Buffer, info) {
+function requireAsPlain (buf: Class_Buffer) {
     return JSON.stringify(buf + '')
 }
 
@@ -30,7 +21,7 @@ function makeResolveBox (extensions) {
     return vbox
 }
 
-export default function resolveId(importee: string, options: RollupPluginFibjsResolve_InternalResolveOptions, cb: ResolveIdCallback) {
+export default function resolveId(importee: string, options: FibRollupResolve.RollupPluginFibjsResolve_InternalResolveOptions, cb: FibRollupResolve.ResolveIdCallback) {
     const vbox = makeResolveBox(options.extensions)
     const resolvedPath = vbox.resolve(importee, options.basedir)
 

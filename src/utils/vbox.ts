@@ -1,10 +1,8 @@
 import vm = require('vm');
-import util = require('util');
 
 import PatchedModule from '../patched-module'
 
-const buildInfo: any = util.buildInfo()
-export const builtinModules = buildInfo.modules
+export const builtinModules = require('@fibjs/builtin-modules')
 export const recommendedVBoxModules = {
     fs: require('fs'),
     path: require('path'),
@@ -25,7 +23,7 @@ export function recommendedVBoxModuleFallback (name) {
     }
 }
 
-export function getCustomizedVBox (myModules: any, myFallback: Function = recommendedVBoxModuleFallback) {
+export function getCustomizedVBox (myModules: any = {}, myFallback: Function = recommendedVBoxModuleFallback) {
     return new vm.SandBox(
         {
             ...recommendedVBoxModules,
@@ -34,7 +32,3 @@ export function getCustomizedVBox (myModules: any, myFallback: Function = recomm
         myFallback
     )
 }
-
-export const vbox = getCustomizedVBox({}, recommendedVBoxModuleFallback.bind(this))
-
-export default vbox

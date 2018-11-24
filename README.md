@@ -19,7 +19,7 @@ Just get javascript API document in [rollupjs.org] later, before that, there're 
 
 fibjs doesn't support all plugins of rollup(including those popular plugins such as [rollup-plugin-node-resolve]) because they use some nodejs APIs that fibjs haven't been compatible with yet.
 
-You can alway run rollup, and write your own plugin, just like `fib-rollup`'s internal plugin "rollup-plugin-fibjs-resolve"(exported as 'fibjsResolve').
+You can alway run rollup, and write your own plugin, just like `fib-rollup`'s internal plugin "rollup-plugin-fibjs-resolve".
 
 We also provide some [API](#API) to run existed rollup-plugin-\* packages. See details about `vbox` and `getCustomizedVBox` in [API](#API) Section.
 
@@ -69,35 +69,25 @@ would be supported in the future.
 
 ## APIs
 
-* module default
+* `utils.vbox.getCustomizedVBox (myModules: any, myFallback: Function = recommendedVBoxModuleFallback)`
 
-rollup running in fibjs.
+get your own vbox by this API, vbox has some patched global module(such as `module`, `util`), but sometimes you need to another version patched global modules.
 
-* `vbox: Object`
-
-Virtual box, it's based on fibjs's [vm.Sandbox], see detail in [src/vbox/index.ts]. It provided some customzied global modules to make plugins running.
+Virtual box, it's based on fibjs's [vm.Sandbox], see detail in [src/utils/vbox.ts]. It provided some customzied global modules to make plugins running.
 
 Some of rollup-plugins can be run directly in raw fibjs's default global context, but some others must be hacked(or rewritten with fibjs). See details in [Plugins Test Result](#Plugins Test Result) below
 
 For example, in fibjs there's no `module` module, which in nodejs is internal module and used to load nodejs' module. More and more npm packages use API in `module` module of nodejs, rollup did so. So I made one patched `module` module in default virtual box, and `vbox.require('rollup', __dirname)` to make rollup running. some of rollup's plugin can be run by this vbox.
 
-default patched module is `recommendedVBoxModules`, see details in [src/vbox/index.ts].
+default patched modules is `recommendedVBoxModules`, see details in [src/utils/vbox.ts].
 
-* `getCustomizedVBox (myModules: any, myFallback: Function = recommendedVBoxModuleFallback)`
+* `utils.vbox.recommendedVBoxModules`
 
-get your own vbox by this API, vbox has some patched global module(such as `module`, `util`), but sometimes you need to another version patched global modules.
+see details in [src/utils/vbox.ts]
 
-* `fibjsResolve(options: RollupPluginFibjsResolveOptions = {})`
+* `utils.vbox.recommendedVBoxModuleFallback`
 
-equivalent to internal plugin `rollup-plugin-fibjs-resolve`
-
-* `recommendedVBoxModules`
-
-see details in [src/vbox/index.ts]
-
-* `recommendedVBoxModuleFallback`
-
-see details in [src/vbox/index.ts]
+see details in [src/utils/vbox.ts]
 
 ## Internal Plugins
 
@@ -242,7 +232,7 @@ Copyright (c) 2018-present, Richard
 [rollupjs.org]:https://rollupjs.org/
 [rollup-plugin-node-resolve]:https://www.npmjs.com/package/rollup-plugin-node-resolve
 [vm.Sandbox]:https://github.com/fibjs/fibjs/blob/master/idl/zh-cn/SandBox.idl
-[src/vbox/index.ts]:src/vbox/index.ts
+[src/utils/vbox.ts]:src/utils/vbox.ts
 [load-mechanism in nodejs]:https://github.com/nodejs/node/blob/master/lib/module.js
 
 [rollup-plugin-buble]:https://www.npmjs.com/package/rollup-plugin-buble

@@ -9,7 +9,7 @@ const virtual = require('rollup-plugin-virtual');
 
 const bundle = await rollup.rollup({
     input: path.resolve(__dirname, './index.ts'),
-    external: [].concat(util.buildInfo().modules),
+    external: [].concat(require('@fibjs/builtin-modules')),
     plugins: [
         virtual({
             foo: fs.readTextFile( path.resolve(__dirname, './virmodule.foo.ts' ) ),

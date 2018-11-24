@@ -5,7 +5,7 @@ var registerTsCompiler = require('fib-typify').registerTsCompiler
 var test = require('test')
 test.setup()
 
-var { getCustomizedVBox } = require('../../')
+var { getCustomizedVBox } = require('../../').utils.vbox
 
 describe('umd-plugin-virtual', () => {
     after(() => {

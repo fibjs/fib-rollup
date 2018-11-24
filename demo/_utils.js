@@ -2,7 +2,7 @@ const fs = require('fs')
 const path = require('path')
 const rmdirr = require('@fibjs/rmdirr')
 
-const {getCustomizedVBox} = require('../')
+const {getCustomizedVBox} = require('../').utils.vbox
 
 exports.getDebugPrefix = function (demopath = '') {
     return `[fib-rollup:${demopath}]`

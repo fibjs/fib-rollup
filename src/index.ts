@@ -1,13 +1,9 @@
-export {
-    default as vbox,
-    recommendedVBoxModules,
-    recommendedVBoxModuleFallback,
-    getCustomizedVBox
-} from './vbox'
+import { getCustomizedVBox } from './utils/vbox'
 
-import { vbox } from './'
+const fibRollup: any = {}
 
-export { default as plugins } from './plugins'
-export const fibjsResolve = require('./').plugins['rollup-plugin-fibjs-resolve']
+fibRollup.plugins = require('./plugins').default
+fibRollup.utils = require('./utils').default
+fibRollup.default = getCustomizedVBox().require('rollup', __dirname)
 
-export default vbox.require('rollup', __dirname);
+export = fibRollup
