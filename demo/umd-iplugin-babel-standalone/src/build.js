@@ -3,10 +3,12 @@ const { default: rollup, plugins } = require('../../../lib')
 
 const commonjs = require('rollup-plugin-commonjs');
 
-;[
+const dirnames = [
     './babelrc',
     './default'
-].forEach(async basedir => {
+]
+
+for (let basedir of dirnames) {
     const bundle = await rollup.rollup({
         input: path.resolve(__dirname, basedir, './index.js'),
         external: ['coroutine'],
@@ -39,4 +41,4 @@ const commonjs = require('rollup-plugin-commonjs');
     }).catch(e => console.error(e.stack));
 
     // console.log('========written==========');
-})
+}
