@@ -2,8 +2,6 @@ import util = require('util')
 import fs = require('fs')
 import path = require('path')
 
-const babelStandalone = require('@babel/standalone')
-
 const DEFAULT_TRANSFORM_CFG = {
     presets: [
         ['es2015', { "modules": false }],
@@ -12,6 +10,8 @@ const DEFAULT_TRANSFORM_CFG = {
 }
 
 export default function rollupPluginBabelStandalone(userOptions) {
+    const babelStandalone = require('@babel/standalone')
+
     userOptions = userOptions && util.isObject(userOptions) ? userOptions : {}
 
     const useBabelRc = userOptions.babelrc !== false
