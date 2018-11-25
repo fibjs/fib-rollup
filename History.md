@@ -1,4 +1,14 @@
 
+v0.3.0 / 2018-11-25
+==================
+
+  * make @babel/standalone load-only-when-required.
+  * add appveyor ci badget
+  * typo normalization; normalize lib's export; add appveyor ci config.
+  * fix test case's wrong async due to too fast executation.
+  * little clean.
+  * adjust test cases file structure.
+
 v0.2.2 / 2018-11-13
 ==================
 

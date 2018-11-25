@@ -1,6 +1,6 @@
 {
   "name": "fib-rollup",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "rollup wrapper of fibjs",
   "main": "./lib/index.js",
   "types": "@types/index.d.ts",
