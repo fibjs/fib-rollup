@@ -1,4 +1,4 @@
-import { getCustomizedVBox } from "../utils/vbox";
+import { getCustomizedVBox } from "../../utils/vbox";
 
 function requireAsPlain (buf: Class_Buffer) {
     return JSON.stringify(buf + '')

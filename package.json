@@ -2,7 +2,7 @@
   "name": "fib-rollup",
   "version": "0.3.0",
   "description": "rollup wrapper of fibjs",
-  "main": "./lib/index.js",
+  "main": "./lib",
   "types": "@types/index.d.ts",
   "scripts": {
     "build": "fib-typify src -c .typifyrc.json -o lib",

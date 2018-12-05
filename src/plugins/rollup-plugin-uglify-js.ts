@@ -5,7 +5,7 @@ function md5(content: string = '') {
     return hash['md5'](content).digest().hex()
 }
 
-import { transform } from './utils/uglify-transform.js'
+import { transform } from './utils/uglify-transform'
 
 export default function rollupPluginUglifyJS(userOptions = {}) {
     const minifierOptions = {
