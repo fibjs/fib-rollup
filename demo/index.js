@@ -12,6 +12,8 @@ describe('all', () => {
         }
     })
 
+    run('./umd-custom-plugin-1/spec')
+    
     run('./server-umd-simple/spec')
 
     run('./cjs-simple/spec')
