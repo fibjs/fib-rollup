@@ -119,6 +119,7 @@ const bundle = await rollup.rollup({
     ]
 }).catch(e => console.error(e));
 ```
+
 **rollup-plugin-uglify-js**
 ---
 
@@ -140,6 +141,30 @@ const bundle = await rollup.rollup({
         buble(),
         commonjs(),
         plugins['rollup-plugin-uglify-js']()
+    ]
+}).catch(e => console.error(e));
+```
+
+**rollup-plugin-uglify-es**
+---
+
+**Started from 0.4.0**
+
+`uglify-es` wrapper for rollup on fibjs.
+
+```javascript
+const path = require('path');
+const { default: rollup, plugins } = require('../../')
+
+const commonjs = require('rollup-plugin-commonjs');
+
+const bundle = await rollup.rollup({
+    input: path.resolve(__dirname, './index.js'),
+    external: ['coroutine'],
+    plugins: [
+        plugins['rollup-plugin-fibjs-resolve'](),
+        commonjs(),
+        plugins['rollup-plugin-uglify-es']()
     ]
 }).catch(e => console.error(e));
 ```
