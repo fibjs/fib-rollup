@@ -30,6 +30,7 @@
     "@fibjs/builtin-modules": "^0.1.0",
     "is-module": "^1.0.0",
     "rollup": "^0.66.6",
+    "uglify-es": "^3.3.9",
     "uglify-js": "^3.4.9",
     "util-deprecate": "^1.0.2"
   },

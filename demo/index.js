@@ -24,6 +24,7 @@ describe('all', () => {
 
     run('./umd-iplugin-babel-standalone/spec')
     run('./umd-iplugin-uglify-js/spec')
+    run('./umd-iplugin-uglify-es/spec')
 
     run('./umd-plugin-alias/spec')
     run('./umd-plugin-json/spec')
