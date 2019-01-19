@@ -82,7 +82,7 @@ function fibjsResolve(options: FibRollupResolve.RollupPluginFibjsResolveOptions 
             preserveSymlinks = options.preserveSymlinks;
         },
 
-        onwrite() {
+        generateBundle() {
             isFileCache = {};
             readFileCache = {};
         },

@@ -12,7 +12,7 @@ export default function rollupPluginUglifyES(userOptions = {}) {
         ...userOptions
     }
 
-    const fibers = {}
+    const evs = {}
 
     return {
         name: 'rollup-plugin-uglify-js',
@@ -21,17 +21,28 @@ export default function rollupPluginUglifyES(userOptions = {}) {
       
         renderChunk(code) {
             const hash = md5(code)
-            let result = null
-            if (!fibers[hash]) {
-                fibers[hash] = coroutine.start(() => {
+
+            let result = null, err = null
+            let ev = evs[hash]
+
+            if (!ev) {
+                ev = evs[hash] = new coroutine.Event()
+                coroutine.start(() => {
                     result = transformES(code, minifierOptions)
+                    ev.set()
+                    delete evs[hash]
                 })
             }
-            
-            fibers[hash].join()
-            delete fibers[hash]
 
-            return result.code
+            return new Promise(function (resolve, reject) {
+                ev.wait()
+
+                if (err) {
+                    reject(err)
+                }
+
+                resolve(result.code)
+            });
         },
       
         // generateBundle() { // console.log('generateBundle') },

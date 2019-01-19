@@ -8,7 +8,7 @@ const vbox = utils.vbox.getCustomizedVBox({
   }
 })
 const commonjs = require('rollup-plugin-commonjs')
-const vuePlugin = vbox.require('rollup-plugin-vue', __dirname).default
+const VuePlugin = vbox.require('rollup-plugin-vue', __dirname)
 const pugjs = require('rollup-plugin-pug')
 
 exports.compile = async function (srcpath, targetpath, umdName = 'umdComponent') {
@@ -19,11 +19,8 @@ exports.compile = async function (srcpath, targetpath, umdName = 'umdComponent')
         'vue'
       ],
       plugins: [
-          vuePlugin({
-            css: true,
-            style: {
-              trim: true
-            }
+          VuePlugin({
+            css: true
           }),
           pugjs(),
           plugins['rollup-plugin-fibjs-resolve']({

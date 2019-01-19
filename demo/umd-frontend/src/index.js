@@ -1,4 +1,4 @@
-import Vue from 'vue/dist/vue.esm'
+import Vue from 'vue/dist/vue.runtime'
 import React from 'react'
 
 const vm = new Vue({

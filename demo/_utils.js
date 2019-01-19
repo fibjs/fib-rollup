@@ -2,7 +2,7 @@ const fs = require('fs')
 const path = require('path')
 const rmdirr = require('@fibjs/rmdirr')
 
-const {getCustomizedVBox} = require('../').utils.vbox
+const {getVueSsrVBox} = require('../').utils.vbox
 
 exports.getDebugPrefix = function (demopath = '') {
     return `[fib-rollup:${demopath}]`
@@ -23,7 +23,7 @@ exports.isDebugDemo = function () {
 }
 
 exports.getVueSSRInstance = function () {
-    return getCustomizedVBox().require('vue-server-renderer', __dirname)
+    return getVueSsrVBox().require('vue-server-renderer', __dirname)
 }
 
 exports.cleanDist = function () {

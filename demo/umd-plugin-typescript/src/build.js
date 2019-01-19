@@ -8,13 +8,13 @@ const bundle = await rollup.rollup({
     input: path.resolve(__dirname, './index.ts'),
     external: ['coroutine'],
     plugins: [
-        // require('rollup-plugin-buble')(),
         plugins['rollup-plugin-fibjs-resolve']({
             extensions: ['.js', '.ts']
         }),
         typescript({
             typescript: require('typescript'), 
-            tslib: require('tslib'), 
+            tslib: require('tslib'),
+            tsconfig: path.resolve(__dirname, './tsconfig.json')
         }),
         commonjs(),
         plugins['rollup-plugin-uglify-js']()

@@ -19,12 +19,12 @@ describe('umd-plugin-typescript', () => {
     it('plugin:typescript', () => {
         require('./src/build')
 
-        var sb = getCustomizedVBox()
-        registerTsCompiler(sb)
+        var vbox = getCustomizedVBox()
+        // registerTsCompiler(vbox)
         
-        var bundle = sb.require('./dist/bundle.js', __dirname)
+        var bundle = vbox.require('./dist/bundle.js', __dirname)
 
-        assert.equal(Object.values(sb.modules).find(x => x === bundle), bundle)
+        assert.equal(Object.values(vbox.modules).find(x => x === bundle), bundle)
 
         assert.isFunction(bundle.foo)
 

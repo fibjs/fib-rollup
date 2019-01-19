@@ -1,3 +1,4 @@
+import path = require('path');
 import vm = require('vm');
 
 import PatchedModule from '../patched-module'
@@ -31,4 +32,21 @@ export function getCustomizedVBox (myModules: any = {}, myFallback: Function = r
         },
         myFallback
     )
+}
+
+export function getVueSsrVBox (myModules: any = {}, myFallback: Function = recommendedVBoxModuleFallback, opts: any = {}) {
+    const vbox = new vm.SandBox(
+        {
+            ...recommendedVBoxModules,
+            ...myModules
+        },
+        myFallback
+    )
+
+    const { env = {} } = opts || {}
+
+    vbox.addScript('__VUE_NODE_ENV__', `process.env.NODE_ENV="${env.NODE_ENV || 'development'}";` as any)
+    vbox.run(path.resolve(__dirname, '../snippets/vue-ssr.js'))
+
+    return vbox
 }
