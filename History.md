@@ -1,7 +1,19 @@
 
-v0.3.0 / 2018-11-25
+v0.4.0 / 2019-01-19
 ==================
 
+  * upgrade core, normalize code, disable vue-ssr use case due to bug of rollup-plugin-vue.
+  * add doc about internal plugin['rollup-plugin-uglify-es'].
+  * add internal plugin 'rollup-plugin-uglify-es'.
+  * add demo/umd-custom-plugin1.
+  * ts debuggable.
+  * add simple server-side module package demo.
+  * upgrade dependency.
+
+v0.3.0 / 2018-11-25
+===================
+
+  * Release v0.3.0
   * make @babel/standalone load-only-when-required.
   * add appveyor ci badget
   * typo normalization; normalize lib's export; add appveyor ci config.
@@ -10,8 +22,9 @@ v0.3.0 / 2018-11-25
   * adjust test cases file structure.
 
 v0.2.2 / 2018-11-13
-==================
+===================
 
+  * Release v0.2.2
   * support rollup-plugin-typescript.
 
 v0.2.1 / 2018-10-23
