@@ -1,3 +1,5 @@
+/// <reference lib="es2016" />
+
 import { getCustomizedVBox } from "../../utils/vbox";
 
 function requireAsPlain (buf: Class_Buffer) {
