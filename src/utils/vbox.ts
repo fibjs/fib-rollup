@@ -18,7 +18,7 @@ export const recommendedVBoxModules = {
     'builtin-modules': builtinModules
 }
 
-export function recommendedVBoxModuleFallback (name) {
+export function recommendedVBoxModuleFallback (name: string) {
     if (builtinModules.includes(name)) {
         return require(name)
     }
