@@ -37,8 +37,6 @@ describe('all', () => {
     run('./umd-plugin-graph/spec')
 
     run('./umd-frontend/spec')
-
-    run('./vue-component/spec')
 })
 
 if (require.main === module) {

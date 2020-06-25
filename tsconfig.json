@@ -2,6 +2,9 @@
     "compilerOptions": {
         "target": "es6",
         "module": "commonjs",
-        "noImplicitUseStrict": true
+        "noImplicitUseStrict": true,
+        "allowJs": true,
+        "declaration": true,
+        "declarationDir": "typings"
     }
 }

@@ -1,3 +1,5 @@
+/// <reference types="@fibjs/types" />
+
 import { getCustomizedVBox } from './utils/vbox'
 
 const fibRollup: any = {}

@@ -209,7 +209,6 @@ const bundle = await rollup.rollup({
     - [ ] fibos
 - [x] server-side bundle
 - [x] frontend javacript bundle
-    - [x] vue
     - [ ] react
     - [ ] angular
     - [ ] jquery
@@ -222,7 +221,6 @@ const bundle = await rollup.rollup({
 | [rollup-plugin-buble] | `v0.2.0`  | ✔️ | valid but it's not recommended to use with `http.Server`, it would lead to memory leak sometimes. |
 | [rollup-plugin-commonjs] | `v0.2.0`  | ✔️ | |
 | [rollup-plugin-pug] | `v0.2.0`  | ✔️ | |
-| [rollup-plugin-vue] | `v0.2.0`  | ✔️ | |
 | [rollup-plugin-json] | `v0.2.0`  | ✔️ | |
 | [rollup-plugin-graph] | -  | ❌ | |
 | [rollup-plugin-typescript] | `v0.2.2`  | ✔️ | **pass `extensions: ['.ts']`**; <br> rollup compile typescript file(entry or module) automatically. |

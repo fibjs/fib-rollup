@@ -12,4 +12,3 @@ import mod1 from './mod1'
 export { mod1 }
 import mod_platform_specified from './mod_platform_specified'
 export { mod_platform_specified }
-export { default as mod3 } from './mod3'

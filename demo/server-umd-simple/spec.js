@@ -25,7 +25,6 @@ describe('server-umd-simple', () => {
 
         assert.isObject(bundle.mod1)
         bundle.mod_platform_specified && assert.isObject(bundle.mod_platform_specified)
-        assert.isObject(bundle.mod3)
     })
 })
 

@@ -24,7 +24,6 @@ describe('umd-frontend', () => {
         var result = bundle()
         assert.equal(Object.values(sb.modules).find(x => x === bundle), bundle)
 
-        assert.property(result, 'Vue')
         assert.property(result, 'React')
     })
 })
