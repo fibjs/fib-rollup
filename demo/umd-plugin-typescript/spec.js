@@ -20,7 +20,6 @@ describe('umd-plugin-typescript', () => {
         require('./src/build')
 
         var vbox = getCustomizedVBox()
-        // registerTsCompiler(vbox)
         
         var bundle = vbox.require('./dist/bundle.js', __dirname)
 

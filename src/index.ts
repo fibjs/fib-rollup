@@ -2,10 +2,15 @@
 
 import { getCustomizedVBox } from './utils/vbox'
 
-const fibRollup: any = {}
+export { default as plugins } from './plugins'
+export { default as utils } from './utils'
 
-fibRollup.plugins = require('./plugins').default
-fibRollup.utils = require('./utils').default
-fibRollup.default = getCustomizedVBox().require('rollup', __dirname)
+const fibRollup: typeof import('rollup') = getCustomizedVBox({
+    /**
+     * used by
+     * - internal plugin 'buble'
+     */
+    acorn: require('acorn')
+}).require('rollup', __dirname)
 
-export = fibRollup
+export default fibRollup

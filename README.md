@@ -37,7 +37,7 @@ sample build config
 ```javascript
 const { default: rollup, plugins } = require('fib-rollup')
 
-const commonjs = require('rollup-plugin-commonjs');
+const commonjs = require('@rollup/plugin-commonjs');
 
 // yes, just use top-level await!
 // get rollup instance `bundle`
@@ -107,14 +107,14 @@ fibjs's load-mechanism is based on [vm.Sandbox], which distinguished from `modul
 const path = require('path');
 const { default: rollup, plugins } = require('../../')
 
-const commonjs = require('rollup-plugin-commonjs');
+const commonjs = require('@rollup/plugin-commonjs');
 
 const bundle = await rollup.rollup({
     input: path.resolve(__dirname, './index.js'),
     external: ['coroutine'],
     plugins: [
         plugins['rollup-plugin-fibjs-resolve'](),
-        // use it with rollup-plugin-commonjs
+        // use it with @rollup/plugin-commonjs
         commonjs()
     ]
 }).catch(e => console.error(e));
@@ -129,8 +129,8 @@ const bundle = await rollup.rollup({
 const path = require('path');
 const { default: rollup, plugins } = require('../../')
 
-const buble = require('rollup-plugin-buble')
-const commonjs = require('rollup-plugin-commonjs');
+const buble = require('@rollup/plugin-buble')
+const commonjs = require('@rollup/plugin-commonjs');
 
 const bundle = await rollup.rollup({
     input: path.resolve(__dirname, './index.ts'),
@@ -156,7 +156,7 @@ const bundle = await rollup.rollup({
 const path = require('path');
 const { default: rollup, plugins } = require('../../')
 
-const commonjs = require('rollup-plugin-commonjs');
+const commonjs = require('@rollup/plugin-commonjs');
 
 const bundle = await rollup.rollup({
     input: path.resolve(__dirname, './index.js'),
@@ -178,7 +178,7 @@ use `babel-standalone` to transform javascript
 const path = require('path');
 const { default: rollup, plugins } = require('../../')
 
-const commonjs = require('rollup-plugin-commonjs');
+const commonjs = require('@rollup/plugin-commonjs');
 
 const bundle = await rollup.rollup({
     input: path.resolve(__dirname, './index.ts'),
@@ -218,16 +218,16 @@ const bundle = await rollup.rollup({
 
 | Plugin Name | required version | Is Valid? | Comment |
 | --- | --- | --- | --- |
-| [rollup-plugin-buble] | `v0.2.0`  | ✔️ | valid but it's not recommended to use with `http.Server`, it would lead to memory leak sometimes. |
-| [rollup-plugin-commonjs] | `v0.2.0`  | ✔️ | |
+| [@rollup/plugin-buble] | `v0.2.0`  | ✔️ | valid but it's not recommended to use with `http.Server`, it would lead to memory leak sometimes. |
+| [@rollup/plugin-commonjs] | `v0.2.0`  | ✔️ | |
 | [rollup-plugin-pug] | `v0.2.0`  | ✔️ | |
-| [rollup-plugin-json] | `v0.2.0`  | ✔️ | |
+| [@rollup/plugin-json] | `v0.2.0`  | ✔️ | |
 | [rollup-plugin-graph] | -  | ❌ | |
-| [rollup-plugin-typescript] | `v0.2.2`  | ✔️ | **pass `extensions: ['.ts']`**; <br> rollup compile typescript file(entry or module) automatically. |
+| [@rollup/plugin-typescript] | `v0.2.2`  | ✔️ | **pass `extensions: ['.ts']`**; <br> rollup compile typescript file(entry or module) automatically. |
 | [rollup-plugin-virtual] | `v0.2.0`  | ✔️ | |
 | [rollup-plugin-uglify] | -  | ❌  | |
 | [rollup-plugin-terser] | -  | ❌  | |
-| [rollup-plugin-alias] | `v0.2.0`  | ✔️  | |
+| [@rollup/plugin-alias] | `v0.2.0`  | ✔️  | |
 
 <!-- ❌ -->
 
@@ -259,14 +259,14 @@ Copyright (c) 2018-present, Richard
 [src/utils/vbox.ts]:src/utils/vbox.ts
 [load-mechanism in nodejs]:https://github.com/nodejs/node/blob/master/lib/module.js
 
-[rollup-plugin-buble]:https://www.npmjs.com/package/rollup-plugin-buble
-[rollup-plugin-commonjs]:https://www.npmjs.com/package/rollup-plugin-commonjs
+[@rollup/plugin-buble]:https://www.npmjs.com/package/@rollup/plugin-buble
+[@rollup/plugin-commonjs]:https://www.npmjs.com/package/@rollup/plugin-commonjs
 [rollup-plugin-pug]:https://www.npmjs.com/package/rollup-plugin-pug
-[rollup-plugin-json]:https://www.npmjs.com/package/rollup-plugin-json
+[@rollup/plugin-json]:https://www.npmjs.com/package/@rollup/plugin-json
 [rollup-plugin-vue]:https://www.npmjs.com/package/rollup-plugin-vue
-[rollup-plugin-typescript]:https://www.npmjs.com/package/rollup-plugin-typescript
+[@rollup/plugin-typescript]:https://www.npmjs.com/package/@rollup/plugin-typescript
 [rollup-plugin-graph]:https://www.npmjs.com/package/rollup-plugin-graph
 [rollup-plugin-virtual]:https://www.npmjs.com/package/rollup-plugin-virtual
 [rollup-plugin-uglify]:https://www.npmjs.com/package/rollup-plugin-uglify
 [rollup-plugin-terser]:https://www.npmjs.com/package/rollup-plugin-terser
-[rollup-plugin-alias]:https://www.npmjs.com/package/rollup-plugin-alias
+[@rollup/plugin-alias]:https://www.npmjs.com/package/@rollup/plugin-alias

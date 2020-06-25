@@ -1,8 +1,8 @@
 const path = require('path');
 const { default: rollup, plugins } = require('../../../lib')
 
-const commonjs = require('rollup-plugin-commonjs');
-const json = require('rollup-plugin-json');
+const commonjs = require('@rollup/plugin-commonjs');
+const json = require('@rollup/plugin-json');
 
 const bundle = await rollup.rollup({
     input: path.resolve(__dirname, './index.ts'),

@@ -15,7 +15,7 @@ export const recommendedVBoxModules = {
     crypto: require('crypto'),
     buffer: require('buffer'),
     module: PatchedModule,
-    'builtin-modules': builtinModules
+    'builtin-modules': builtinModules,
 }
 
 export function recommendedVBoxModuleFallback (name: string) {

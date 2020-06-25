@@ -6,7 +6,7 @@ function requireAsPlain (buf: Class_Buffer) {
     return JSON.stringify(buf + '')
 }
 
-function makeResolveBox (extensions) {
+export function makeResolveBox (extensions) {
     const vbox = getCustomizedVBox({})
 
     if (Array.isArray(extensions)) {
@@ -21,11 +21,4 @@ function makeResolveBox (extensions) {
     }
 
     return vbox
-}
-
-export default function resolveId(importee: string, options: FibRollupResolve.RollupPluginFibjsResolve_InternalResolveOptions, cb: FibRollupResolve.ResolveIdCallback) {
-    const vbox = makeResolveBox(options.extensions)
-    const resolvedPath = vbox.resolve(importee, options.basedir)
-
-    cb(null, resolvedPath)
 }

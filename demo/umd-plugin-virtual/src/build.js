@@ -3,8 +3,8 @@ const util = require('util');
 const path = require('path');
 const { default: rollup, plugins } = require('../../../lib')
 
-const commonjs = require('rollup-plugin-commonjs');
-const buble = require('rollup-plugin-buble');
+const commonjs = require('@rollup/plugin-commonjs');
+const buble = require('@rollup/plugin-buble');
 const virtual = require('rollup-plugin-virtual');
 
 const bundle = await rollup.rollup({

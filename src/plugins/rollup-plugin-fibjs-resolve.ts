@@ -1,9 +1,9 @@
 import { dirname, resolve, extname, normalize } from 'path';
 const builtins = require('util').buildInfo().modules;
-import resolveId from './utils/_resolve-id';
 import isModule from 'is-module';
 import * as fs from 'fs';
 import * as path from 'path';
+import { makeResolveBox } from './utils/_resolve-id';
 
 declare namespace FibRollupResolve {
     type BooleanableVar<T = any> = T | boolean
@@ -61,6 +61,12 @@ declare namespace FibRollupResolve {
     interface ResolveIdCallback {
         (err: Error, code: string): void
     }
+}
+function resolveId(importee: string, options: FibRollupResolve.RollupPluginFibjsResolve_InternalResolveOptions, cb: FibRollupResolve.ResolveIdCallback) {
+    const vbox = makeResolveBox(options.extensions)
+    const resolvedPath = vbox.resolve(importee, options.basedir)
+
+    cb(null, resolvedPath)
 }
 
 const ES6_BROWSER_EMPTY = resolve(__dirname, '../snippets/empty.js');

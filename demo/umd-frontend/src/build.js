@@ -2,8 +2,8 @@ const { resolveFromCurdir, isDebugDemo } = require('../../_utils')
 
 const {default: rollup, plugins} = require('../../../lib')
 
-const buble = require('rollup-plugin-buble')
-const commonjs = require('rollup-plugin-commonjs')
+const buble = require('@rollup/plugin-buble')
+const commonjs = require('@rollup/plugin-commonjs')
 
 const bundle = await rollup.rollup({
     input: resolveFromCurdir(__dirname)('./index.js'),
